@@ -1,0 +1,54 @@
+package com.zensar.masterdata.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.zensar.masterdata.entity.MasterData;
+
+
+
+@RestController
+public class MasterController {
+
+	static List<MasterData> data=new ArrayList<MasterData>();
+	static {
+		data.add(new MasterData(1,"laptop sale",54000,"Electronic goods","intel core 3 Sony Vaio","anand",2020,2022,"OPEN"));
+	}
+	@PostMapping("/advertise")
+	public List<MasterData> postNewAdvertise(@RequestBody  MasterData masterData, @RequestHeader("auth-token") String token ){
+		if(token.equalsIgnoreCase("sr222")) {
+			return data;
+		}else;
+		return null;
+	}
+	@PutMapping("/advertise/{id}")
+	public List<MasterData> updateAdvertise(@PathVariable  int id, @RequestBody MasterData masterData){
+	
+		MasterData masterData1=new MasterData();
+		if(masterData1.getId()==id) {
+			masterData1.setId(2);
+			return data;
+		}else {
+			return null;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

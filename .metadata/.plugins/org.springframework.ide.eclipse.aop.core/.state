@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="spring-core"/>
+<aop-project name="AOP"/>
+<aop-project name="SpringDemoApplication3"/>
+<aop-project name="CouponService"/>
+<aop-project name="OLX-Advertize"/>
+<aop-project name="stock-application"/>
+<aop-project name="OLX-Login"/>
+<aop-project name="Product-Service"/>
+<aop-project name="aaadarsh"/>
+<aop-project name="spring11-core"/>
+<aop-project name="OLX-MasterData"/>
+</aop-reference-model>

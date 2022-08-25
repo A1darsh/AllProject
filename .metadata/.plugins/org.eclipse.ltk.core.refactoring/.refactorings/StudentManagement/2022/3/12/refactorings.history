@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.zensar.entity&apos; to &apos;com.zensar.entity1&apos;&#x0D;&#x0A;- Original project: &apos;StudentManagement&apos;&#x0D;&#x0A;- Original element: &apos;StudentManagement/src/com.zensar.entity&apos;&#x0D;&#x0A;- Renamed element: &apos;StudentManagement/src/com.zensar.entity1&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.zensar.entity&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.zensar.entity" name="com.zensar.entity1" qualified="false" references="true" stamp="1647322403922" textual="false" version="1.0"/>
+</session>

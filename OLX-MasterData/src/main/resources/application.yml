@@ -1,0 +1,30 @@
+server:
+  port: 4030
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/Master
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+         - "*"
+       # exclude:
+        # - health
+      base-path: "/masterApp"  
+      
+  endpoint:
+    shutdown:
+      enabled: true

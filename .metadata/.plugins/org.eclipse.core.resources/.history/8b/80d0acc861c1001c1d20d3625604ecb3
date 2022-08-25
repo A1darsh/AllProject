@@ -1,0 +1,59 @@
+package com.zensar.masterdata.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.zensar.masterdata.entity.MasterData;
+import com.zensar.stockapplication.entity.Stock;
+
+
+
+@RestController
+public class MasterController {
+	MasterData MasterData1=new MasterData();
+
+	static List<MasterData> data=new ArrayList<MasterData>();
+	static {
+		data.add(new MasterData(1,"laptop sale",54000,"Electronic goods","intel core 3 Sony Vaio","anand",2020,2022,"OPEN"));
+	}
+	@PostMapping("/advertise")
+	public List<MasterData> postNewAdvertise(@RequestBody  MasterData masterData, @RequestHeader("auth-token") String token ){
+		if(token.equalsIgnoreCase("sr222")) {
+			return data;
+		}else;
+		return null;
+	}
+	@PutMapping("/advertise/{id}")
+	public MasterData updateAdvertise(@PathVariable int id, @RequestBody MasterData masterData,
+	@RequestHeader("auth-token") String token) {
+	if (token.equals("sr222")) {
+	Optional<MasterData> findAny = data.stream().filter(MasterData -> masterData.getId() == id).findAny();
+
+	if (findAny.isPresent()) {
+		MasterData adv = findAny.get();
+	adv.setTitle(MasterData1.getTitle());
+	adv.setPrice(MasterData1.getPrice());
+	adv.setId(MasterData1.getId());
+	adv.setDiscription(MasterData1.getDiscription());
+	return adv;
+	} else {
+	return findAny.orElseGet(() -> new MasterData());
+	}
+	} else
+	return null;
+	}
+	
+
+		
+	
+}

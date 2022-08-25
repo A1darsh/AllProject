@@ -1,0 +1,6 @@
+matching-strategy: ANT_PATH_MATCHER
+mvc": ''
+pathmatch: ''
+server:
+  port: 4000
+spring: ''

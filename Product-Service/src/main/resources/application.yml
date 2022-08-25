@@ -1,0 +1,16 @@
+server:
+  port: 4050
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/ProductService
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+      

@@ -1,0 +1,117 @@
+package com.zensar.masterdata.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zensar.masterdata.entity.MasterData;
+
+@RestController
+@RequestMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, consumes = {
+		MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+public class MasterController {
+	// MasterData MasterData1=new MasterData();
+
+	static List<MasterData> data = new ArrayList<MasterData>();
+	static {
+		data.add(new MasterData(1, "laptop sale", 54000, "Electronic goods", "intel core 3 Sony Vaio", "anand", 2020,
+				2022, "OPEN"));
+
+	}
+
+	@PostMapping(value = "/advertise")
+	public List<MasterData> postNewAdvertise(@RequestBody MasterData masterData,
+			@RequestHeader("auth-token") String token) {
+		if (token.equalsIgnoreCase("am222")) {
+			return data;
+
+		} else
+
+			return null;
+	}
+
+	@PutMapping(value = "/advertise/{id}")
+	public MasterData updateAdvertise(@PathVariable int id, @RequestBody MasterData masterData1,
+			@RequestHeader("auth-token") String token) {
+		if (token.equals("am222")) {
+			System.out.println("hello");
+			Optional<MasterData> findAny = data.stream().filter(MasterData -> MasterData.getId() == id).findAny();
+
+			if (findAny.isPresent()) {
+				MasterData obj = findAny.get();
+				obj.setTitle(masterData1.getTitle());
+				obj.setPrice(masterData1.getPrice());
+				obj.setId(masterData1.getId());
+				obj.setDescription(masterData1.getDescription());
+				return obj;
+			} else {
+				return findAny.orElseGet(() -> new MasterData());
+			}
+		} else
+			return null;
+	}
+
+	static List<MasterData> data1 = new ArrayList<MasterData>();
+	static {
+		data.add(new MasterData(2, "Sofa available for sale", 30000, "Furniture",
+				"Sofa 5 years old available for Sale in Pune", "anand", 2020, 2022, "OPEN"));
+	}
+
+	@GetMapping(value = "/user/advertise")
+	public List<MasterData> Get(@RequestHeader("auth-token") String token) {
+		if (token.equals("am222")) {
+			return data;
+		} else {
+			return null;
+		}
+	}
+
+	@GetMapping(value = "/user/advertise/{id}")
+	public MasterData getSpecificAdvertise(@PathVariable int id, @RequestHeader("auth-token") String token) {
+		MasterData md = new MasterData();
+		if (token.equals("am222")) {
+			for (MasterData Data : data) {
+				if (Data.getId() == id) {
+					return Data;
+				}
+			}
+		}
+		return null;
+	}
+
+	@DeleteMapping("/user/advertise/{id}")
+	public boolean deleteSpecificAdvertise(@PathVariable int id, @RequestHeader("auth-token") String token5) {
+		if (token5.equals("am222")) {
+			Optional<MasterData> findAny = data.stream().filter(MasterData -> MasterData.getId() == id).findAny();
+
+			if (findAny.isPresent()) {
+				MasterData MasterData = findAny.get();
+				data.remove(MasterData);
+				return true;
+			} else {
+				return false;
+			}
+		} else
+			return false;
+	}
+
+	@GetMapping(value = "/advertise/search/{filtercriteria}")
+	public List<MasterData> searchAdvertisementsByCriteria(@PathVariable long filtercriteria, String category, String toDate,
+			String fromDate) {
+		return data;
+	}
+
+	
+}

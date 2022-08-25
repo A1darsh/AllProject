@@ -1,0 +1,50 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.zensar.entity.Address" name="address">
+		<property name="pincode" value="101"></property>
+		<property name="city" value="pune"></property>
+		
+		<constructor-arg value="101"></constructor-arg>
+		<constructor-arg value="goa"></constructor-arg>
+	</bean>
+
+	<bean class="com.zensar.entity.Emp" name="emp">
+		<property name="name" value="ram"></property>
+		<property name="phones">
+			<list>
+				<value>7564534</value>
+				<value>75635354</value>
+				<value>7599994</value>
+				<value>711114</value>
+			</list>
+		</property>
+		<property name="addre">
+			<set>
+				<value>delhi</value>
+				<value>up</value>
+				<value>mp</value>
+			</set>
+		</property>
+		<property name="cources">
+			<map>
+				<entry key="java" value="2month"></entry>
+				<entry key="python" value="1.2month"></entry>
+				<entry key="python" value="1month"></entry>
+			</map>
+
+		</property>
+	</bean>
+	<bean class="com.zensar.entity.Employee" name="emp1"
+		autowire="byType">
+		<property name="id" value="1"></property>
+		<property name="name" value="adarsh"></property>
+		<property name="salary" value="1000"></property>
+		
+	</bean>
+
+
+
+</beans> -->

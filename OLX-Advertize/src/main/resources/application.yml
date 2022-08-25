@@ -1,0 +1,29 @@
+server:
+  port: 4010
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/Advertise
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+      format_sql: true
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+         - "*"
+       # exclude:
+        # - health
+      base-path: "/Advertise"  
+      
+  endpoint:
+    shutdown:
+      enabled: true

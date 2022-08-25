@@ -1,0 +1,5 @@
+package com.zensar.masterdata.service;
+
+public interface MasterDataService {
+
+}

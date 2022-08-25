@@ -1,0 +1,48 @@
+server:
+  port: 4040
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/stockApp
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  #security:
+  # user:
+  #   name: zensar
+  #   password: zensar@123
+  
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+         - "*"
+       # exclude:
+        # - health
+      base-path: "/my-actuator"  
+      
+  endpoint:
+    shutdown:
+      enabled: true
+      
+      
+ 
+      
+      
+      
+      
+      
+      
+      
+      
+         
+
+    

@@ -1,0 +1,23 @@
+package com.zensar.database;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JDBCDemo {
+
+	public static void main(String[] args) throws SQLException  {
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			DriverManager.getConnection("jdbc:mysql://my-database.cm6hqiqhanoc.ap-south-1.rds.amazonaws.com","root", "ZensarRoot");
+		
+			System.out.println("connected");
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
